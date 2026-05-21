@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Hardcore Clicker Tycoon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Russo+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="side-text left-text">ОТПИЗДИ<br>МЕНЯ</div>
+    <div class="side-text right-text">ЕСЛИ ХОЧЕШЬ<br>ЧТОБЫ МЕНЯ<br>ВЫЕБАЛИ<br>ОТЧИМЫ!</div>
+
+    <div class="counter-container" id="counter">0</div>
+    <div class="stats-info" id="stats">Клик: +1 | Авто: 0/сек</div>
+
+    <div class="game-area" id="clickZone">
+        <img src="123.png" alt="Жертва" class="clickable-img" id="clickImage" draggable="false">
+        <img src="hammer.gif" id="hammer-overlay" class="hit-overlay hammer-pos" draggable="false">
+        <img src="sk.gif"     id="sk-overlay"     class="hit-overlay sk-pos"     draggable="false">
+        <img src="mk.gif"     id="mega-overlay"   class="hit-overlay mega-pos"   draggable="false">
+        <div class="mega-text" id="megaText">МЕГАНАЙТ!</div>
+    </div>
+
+    <div class="emote-panel">
+        <div class="emote-btn" onclick="sendEmote('mimimi.png')"><img src="mimimi.png" draggable="false"></div>
+        <div class="emote-btn" onclick="sendEmote('mkk.png')"   ><img src="mkk.png"    draggable="false"></div>
+        <div class="emote-btn" onclick="sendEmote('hog.png')"   ><img src="hog.png"    draggable="false"></div>
+        <div class="emote-btn" onclick="sendEmote('mimi.png')"  ><img src="mimi.png"   draggable="false"></div>
+    </div>
+
+    <div class="shop-container">
+        <div class="shop-title">🔥 МАГАЗИН РАЗЪЁБОВ 🔥</div>
+        <div class="shop-items">
+
+            <div class="item-card" onclick="buyClickPower()">
+                <span class="item-name">💪 УЛУЧШЕНИЕ КЛИКОВ</span>
+                <span class="item-cost" id="click-cost">100 кликов</span>
+                <span class="item-status" id="click-lv">Клик: +1</span>
+            </div>
+
+            <div class="item-card" onclick="buyAutoClicker()">
+                <span class="item-name">⚡ АВТОКЛИКЕР</span>
+                <span class="item-cost" id="auto-cost">1 000 кликов</span>
+                <span class="item-status" id="auto-lv">Уровень: 0</span>
+            </div>
+
+            <div class="item-card" onclick="buyCritChance()">
+                <span class="item-name">💥 КРИТИЧЕСКИЙ УДАР</span>
+                <span class="item-cost" id="crit-cost">500 кликов</span>
+                <span class="item-status" id="crit-lv">Шанс: 0%</span>
+            </div>
+
+            <div class="item-card" onclick="buyGoldenClick()">
+                <span class="item-name">✨ ЗОЛОТОЙ КЛИК</span>
+                <span class="item-cost" id="gold-cost">5 000 кликов</span>
+                <span class="item-status" id="gold-lv">Множитель: x1</span>
+            </div>
+
+            <div class="item-card" onclick="buyComboMaster()">
+                <span class="item-name">🔥 КОМБО-МАСТЕР</span>
+                <span class="item-cost" id="combo-cost">15 000 кликов</span>
+                <span class="item-status" id="combo-lv">Комбо: x1</span>
+            </div>
+
+            <div class="item-card" onclick="buyRageMode()">
+                <span class="item-name">😡 РЕЖИМ БЕРСЕРКА</span>
+                <span class="item-cost" id="rage-cost">30 000 кликов</span>
+                <span class="item-status" id="rage-lv">Не куплен</span>
+            </div>
+
+            <div class="item-card" id="card-20000" onclick="useHammer()">
+                <span class="item-name">🔨 МОЛОТОЧКОМ ПО ЕБАЛУ</span>
+                <span class="item-cost">Разблок.: 20 000</span>
+                <span class="item-status" id="status-20000">🔒 ЗАКРЫТО</span>
+            </div>
+
+            <div class="item-card" id="card-70000" onclick="useSk()">
+                <span class="item-name">🍳 УЛЬТРА-РАЗЪЕБ СКОВОРОДКА</span>
+                <span class="item-cost">Разблок.: 70 000</span>
+                <span class="item-status" id="status-70000">🔒 ЗАКРЫТО</span>
+            </div>
+
+            <div class="item-card secret" id="secret-mega" onclick="summonMegaKnight()">
+                <span class="item-name">👑 МЕГАНАЙТ</span>
+                <span class="item-cost" id="mega-cost">???</span>
+                <span class="item-status" id="mega-status">🔒 ???</span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- HUD-таймеры -->
+    <div class="hud-timer rage-hud" id="rageTimer" style="display:none;">
+        😡 БЕРСЕРК: <span id="rageTimerText">0</span>с
+    </div>
+    <div class="hud-timer mega-hud" id="megaCooldown" style="display:none;">
+        ⏳ Меганайт: <span id="cooldownTimer">10</span>с
+    </div>
+
+    <button class="reset-btn" onclick="resetGame()">🗑 СБРОС</button>
+
+    <audio id="clickSound" src="333.mp3" preload="auto"></audio>
+    <audio id="megaSound"  src="mk2.mp3" preload="auto"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
